@@ -12,17 +12,18 @@
                     <input class="btn btn-primary" type="submit" value="Joke">
                 </div>
             </div>
-            
+
             <hr class="mt-5">
 
+            @foreach ($jokes as $joke)
             <div class="card border-secondary bg-transparent mx-5 text-white">
                 <div class="card-body">
                     <div class="card-title fw-bold">
                         <img src="https://cdn.pixabay.com/photo/2016/11/08/15/21/user-1808597_960_720.png" class="img-circle width-32" width="32px" height="32px">
-                        <a href="#" class="text-decoration-none">@paul</a>
+                        <a href="#" class="text-decoration-none">{{ $joke->user->name }}</a>
                     </div>
                     <div class="card-text">
-                        If you donate one kidney, everybody loves you and you're a total hero. But donate five and suddenly everyone is yelling.
+                        {{ $joke->content }}
                     </div>
                 </div>
                 <div class="card-footer text-secondary border-secondary">
@@ -34,12 +35,12 @@
                             0
                         </div>
                         <div class="col text-end">
-                            Dec 2 2021 7:23 AM
+                            {{ date_format($joke->created_at, "M j Y g:iA") }}
                         </div>
                     </div>
                 </div>
             </div>
-
+            @endforeach
         </div>
     </div>
 </div>
