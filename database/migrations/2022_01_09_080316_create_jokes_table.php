@@ -15,7 +15,7 @@ class CreateJokesTable extends Migration
     {
         Schema::create('jokes', function (Blueprint $table) {
             $table->id();
-            $table->char('user_id', 100);
+            $table->integer('user_id');
             $table->text('content');
             $table->timestamps();
         });
