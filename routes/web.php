@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JokeController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,10 @@ Auth::routes();
 
 Route::resource('jokes', JokeController::class)->except(
     ['create']
+);
+
+Route::resource('votes', VoteController::class)->only(
+    ['index', 'store', 'update', 'destroy']
 );
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
