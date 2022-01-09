@@ -4,8 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8 text-white">
-            @foreach ($jokes as $joke)
-            <div class="card border-secondary bg-transparent m-5 text-white">
+            <div class="card border-secondary bg-transparent mx-5 text-white">
                 <div class="card-body">
                     <div class="card-title fw-bold">
                         <img src="https://cdn.pixabay.com/photo/2016/11/08/15/21/user-1808597_960_720.png" class="img-circle width-32" width="32px" height="32px">
@@ -29,7 +28,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
 </div>

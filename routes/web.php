@@ -22,7 +22,8 @@ Auth::routes();
 // Route::get('/jokes/{joke}', [App\Http\Controllers\JokeController::class, 'show'])->name('jokes.show');
 // Route::get('/jokes/{joke}/edit', [App\Http\Controllers\JokeController::class, 'edit'])->name('jokes.edit');
 
-Route::resource('jokes', JokeController::class)->only([
-    'index', 'show', 'create', 'store', 'update', 'destroy'
-]);;
-Route::get('/', [App\Http\Controllers\JokeController::class, 'index'])->name('home');
+Route::resource('jokes', JokeController::class)->except(
+    ['create']
+);
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class JokeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,16 +24,6 @@ class JokeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('joke.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,16 +32,15 @@ class JokeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required|max:32',
             'content' => 'required|max:512'
         ]);
 
         $joke = Joke::create([
-            'user_id' => $request->input('user_id'),
+            'user_id' => auth()->user()->id,
             'content' => $request->input('content')
         ]);
 
-        return redirect('jokes');
+        return redirect('/');
     }
 
     /**
@@ -57,7 +51,7 @@ class JokeController extends Controller
      */
     public function show(Joke $joke)
     {
-        return "show";
+        return view('joke.show', compact('joke'));
     }
 
     /**
@@ -68,7 +62,7 @@ class JokeController extends Controller
      */
     public function edit(Joke $joke)
     {
-        return "edit";
+        return view("joke.edit", compact('joke'));
     }
 
     /**
@@ -80,7 +74,15 @@ class JokeController extends Controller
      */
     public function update(Request $request, Joke $joke)
     {
-        return "update";
+        $request->validate([
+            'content' => 'required|max:512'
+        ]);
+
+        $joke->update([
+            'content' => $request->input('content')
+        ]);
+
+        return redirect('/');
     }
 
     /**
@@ -91,6 +93,7 @@ class JokeController extends Controller
      */
     public function destroy(Joke $joke)
     {
-        return "destroy";
+        $joke->delete();
+        return redirect('/');
     }
 }
