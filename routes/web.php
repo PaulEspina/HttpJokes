@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JokeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\JokeController::class, 'index'])->name('index');
+// Route::get('/', [App\Http\Controllers\JokeController::class, 'index'])->name('jokes.index');
+// Route::get('/jokes/create', [App\Http\Controllers\JokeController::class, 'create'])->name('jokes.create');
+// Route::post('/jokes', [App\Http\Controllers\JokeController::class, 'store'])->name('jokes.store');
+// Route::get('/jokes/{joke}', [App\Http\Controllers\JokeController::class, 'show'])->name('jokes.show');
+// Route::get('/jokes/{joke}/edit', [App\Http\Controllers\JokeController::class, 'edit'])->name('jokes.edit');
+
+Route::resource('jokes', JokeController::class)->only([
+    'index', 'show', 'create', 'store', 'update', 'destroy'
+]);;
+Route::get('/', [App\Http\Controllers\JokeController::class, 'index'])->name('home');
