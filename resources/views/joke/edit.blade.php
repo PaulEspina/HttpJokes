@@ -8,7 +8,7 @@
                 <div class="card-header bg-black">{{ __('Edit Joke') }}</div>
 
                 <div class="card-body bg-transparent">
-                    <form id="edit" method="POST" action="/jokes/{{ $joke->id }}">
+                    <form id="edit" method="POST" action="/jokes/{{ $joke->id }}?redirect={{$redirect}}">
                         @csrf
                         @method("PATCH")
 
