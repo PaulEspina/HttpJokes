@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\JokeController;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,10 @@ Route::resource('jokes', JokeController::class)->except(
 
 Route::resource('votes', VoteController::class)->only(
     ['store', 'update', 'destroy']
+);
+
+Route::resource('profiles', ProfileController::class)->except(
+    ['create', 'store', 'destroy']
 );
 
 Route::post('votes/up', [App\Http\Controllers\VoteController::class, 'up'])->name('votes.up');
