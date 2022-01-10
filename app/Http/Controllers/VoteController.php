@@ -12,12 +12,6 @@ class VoteController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $v = Vote::all();
-        dd($v);
-    }
-
     public function store(Request $request)
     {
         $request->validate([
