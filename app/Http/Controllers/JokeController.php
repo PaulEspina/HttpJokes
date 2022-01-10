@@ -35,9 +35,9 @@ class JokeController extends Controller
             'content' => 'required|max:512'
         ]);
 
-        $joke = Joke::create([
+        Joke::create([
             'user_id' => auth()->user()->id,
-            'content' => $request->input('content')
+            'content' => strip_tags($request->input('content'))
         ]);
 
         return redirect('/');
