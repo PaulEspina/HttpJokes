@@ -28,7 +28,10 @@ Route::resource('jokes', JokeController::class)->except(
 );
 
 Route::resource('votes', VoteController::class)->only(
-    ['index', 'store', 'update', 'destroy']
+    ['store', 'update', 'destroy']
 );
+
+Route::post('votes/up', [App\Http\Controllers\VoteController::class, 'up'])->name('votes.up');
+Route::post('votes/down', [App\Http\Controllers\VoteController::class, 'down'])->name('votes.down');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
