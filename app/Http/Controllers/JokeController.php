@@ -60,9 +60,10 @@ class JokeController extends Controller
      * @param  \App\Models\Joke  $joke
      * @return \Illuminate\Http\Response
      */
-    public function edit(Joke $joke)
+    public function edit(Joke $joke, Request $request)
     {
-        return view("joke.edit", compact('joke'));
+        $redirect = $request->query('redirect');
+        return view("joke.edit", compact('joke', 'redirect'));
     }
 
     /**
@@ -82,7 +83,8 @@ class JokeController extends Controller
             'content' => $request->input('content')
         ]);
 
-        return redirect('/');
+        $redirect = $request->query('redirect') ?? '/';
+        return redirect($redirect);
     }
 
     /**
