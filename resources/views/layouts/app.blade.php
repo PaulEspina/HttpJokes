@@ -54,10 +54,14 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-primary" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img src="{{ Auth::user()->profile->imagePath }}" class="img-circle" width="32px" height="32px">
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item bg-dark text-white" href="/profiles/{{ Auth::user()->profile->id }}">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item bg-dark text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

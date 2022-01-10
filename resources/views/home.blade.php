@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-8 text-white">
+        <div class="col-xxl-8 text-white">
 
             <form action="/jokes" method="POST">
                 @csrf
@@ -28,8 +28,8 @@
             <div class="card border-secondary bg-transparent m-5 text-white">
                 <div class="card-body">
                     <div class="card-title fw-bold">
-                        <img src="{{ URL::to('/') }}/images/default_pic.png" class="img-circle width-32" width="32px" height="32px">
-                        <a href="#" class="text-decoration-none">{{ $joke->user->name }}</a>
+                        <img src="{{ $joke->user->profile->imagePath }}" class="img-circle" width="32px" height="32px">
+                        <a href="/profiles/{{ $joke->user->profile->id }}" class="text-decoration-none">{{ $joke->user->name }}</a>
                     </div>
                     <div class="card-text">
                         {!! str_replace("\r\n", "<br>", $joke->content); !!}
@@ -37,7 +37,7 @@
                 </div>
                 <div class="card-footer text-secondary border-secondary">
                     <div class="row ">
-                        <div class="col-md">
+                        <div class="col-sm">
                             <upvote-button
                                 style="display: inline"
                                 joke_id="{{$joke->id}}"
