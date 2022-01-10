@@ -26,7 +26,8 @@ class VoteController extends Controller
             'type' => $request->input('type')
         ]);
 
-        return redirect($request->input('redirect') ?? '/');
+        $redirect = $request->query('redirect') ?? '/';
+        return redirect($redirect);
     }
 
     public function update(Request $request, Vote $vote)
@@ -40,7 +41,8 @@ class VoteController extends Controller
             'type' => $request->input('type')
         ]);
 
-        return redirect($request->input('redirect') ?? '/');
+        $redirect = $request->query('redirect') ?? '/';
+        return redirect($redirect);
     }
 
     public function destroy(Request $request, Vote $vote)
