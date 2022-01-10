@@ -17,7 +17,7 @@
                         </div>
                         @if (Auth::user()->id == $profile->user->id)
                             <div class="col-1">
-                                <a href="/profiles/{{ $profile->id }}/edit?redirect=/profiles/1"><img src="/images/edit.png" width="16px"></a>
+                                <a href="/profiles/{{ $profile->id }}/edit?redirect=/profiles/{{ $profile->id }}"><img src="/images/edit.png" width="16px"></a>
                             </div>
                         @endif
                     </div>
