@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 text-white px-5">
+        <div class="col-xxl-8 text-white px-5">
             <ul class="list-group bg-transparent mx-5 p-3">
             @foreach ($profiles as $profile)
                 <li class="list-group-item  bg-transparent border-secondary"><div class="row d-flex">
