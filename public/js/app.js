@@ -5277,7 +5277,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log('Component mounted.');
-    this.$root.$on("upvote", function (msg) {
+    this.$root.$on("upvote" + this.joke_id, function (msg) {
       _this.count = msg;
       _this.down = false;
     });
@@ -5291,7 +5291,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this2.count = response.data['downCount'];
 
-        _this2.$root.$emit("downvote", response.data['upCount']);
+        _this2.$root.$emit("downvote" + _this2.joke_id, response.data['upCount']);
       });
       this.down = !this.down;
     }
@@ -5326,7 +5326,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log('Component mounted.');
-    this.$root.$on("downvote", function (msg) {
+    this.$root.$on("downvote" + this.joke_id, function (msg) {
       _this.count = msg;
       _this.up = false;
     });
@@ -5340,7 +5340,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this2.count = response.data['upCount'];
 
-        _this2.$root.$emit("upvote", response.data['downCount']);
+        _this2.$root.$emit("upvote" + _this2.joke_id, response.data['downCount']);
       });
       this.up = !this.up;
     }

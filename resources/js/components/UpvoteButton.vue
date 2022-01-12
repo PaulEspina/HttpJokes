@@ -15,7 +15,7 @@
         mounted()
         {
             console.log('Component mounted.');
-            this.$root.$on("downvote", msg =>
+            this.$root.$on("downvote" + this.joke_id, msg =>
             {
                 this.count = msg;
                 this.up = false;
@@ -30,7 +30,7 @@
                     .then(response =>
                     {
                         this.count = response.data['upCount'];
-                        this.$root.$emit("upvote", response.data['downCount']);
+                        this.$root.$emit("upvote" + this.joke_id, response.data['downCount']);
                     })
                 this.up = !this.up;
             },
